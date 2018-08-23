@@ -49,8 +49,8 @@ arr.forEach(function () {
 //}
 
 
-gameWrapper.addEventListener("click", (e) => {
 
+var marker = function (e) {
     var target = e.target;
     if (firstTurn === 1 && !target.classList.contains("x") && !target.classList.contains("0") && target.classList.contains("square")) {
         target.innerHTML = playerOne;
@@ -68,12 +68,43 @@ gameWrapper.addEventListener("click", (e) => {
     }
     check()
 
-});
+};
+
+
+if (window.screen.width < 500) {
+    gameWrapper.addEventListener("touchstart", marker);
+} else {
+    gameWrapper.addEventListener("click", marker);
+}
+
+
+
+//gameWrapper.addEventListener("click", (e) => {
+//
+//    var target = e.target;
+//    if (firstTurn === 1 && !target.classList.contains("x") && !target.classList.contains("0") && target.classList.contains("square")) {
+//        target.innerHTML = playerOne;
+//        target.classList.add("x");
+//        target.style.cursor = "default";
+//        firstTurn++
+//        movesMade++
+//
+//    } else if (!target.classList.contains("x") && !target.classList.contains("0") && target.classList.contains("square")) {
+//        target.innerHTML = playerTwo
+//        target.classList.add("0");
+//        target.style.cursor = "default";
+//        firstTurn--
+//        movesMade++
+//    }
+//    check()
+//
+//});
 
 
 
 
 let moves = Array.prototype.slice.call(square);
+
 
 function check() {
 
